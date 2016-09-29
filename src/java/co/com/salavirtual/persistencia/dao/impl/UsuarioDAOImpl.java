@@ -136,7 +136,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                       
                         + "`contrasena` = '', "
                    
-                        + "WHERE idUsuario = " + idUsuario +";";
+                        + " WHERE idUsuario = " + idUsuario +";";
 
                 st.execute(sql);
                 resultado = 1;
