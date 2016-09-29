@@ -134,7 +134,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             try {
                 String sql = "UPDATE usuario SET  "
                       
-                        + "`contrasena` = '', "
+                        + "`contrasena` = '' "
                    
                         + " WHERE idUsuario = " + idUsuario +";";
 
