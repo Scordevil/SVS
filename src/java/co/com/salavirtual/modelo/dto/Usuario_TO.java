@@ -168,6 +168,11 @@ public class Usuario_TO {
         this.email = email;
     }  
  
+    public Usuario_TO(Ciudad_TO idCiudad, String nombre, String cc) {
+        this.idCiudad = idCiudad;
+        this.nombre = nombre;
+        this.cc = cc;
+    }
        
     //Getters and Setters
     public int getIdUsuario() {

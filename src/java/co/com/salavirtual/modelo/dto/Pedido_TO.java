@@ -101,7 +101,11 @@ public class Pedido_TO {
         this.idPedido = idPedido;
         this.idInventario = idInventario;
     }
-    
+
+    public Pedido_TO(String nombreHijo, int edadHijo) {
+        this.nombreHijo = nombreHijo;
+        this.edadHijo = edadHijo;
+    }
 
     public Pedido_TO(int idPedido, Usuario_TO idUsuario, String nombreHijo, int edadHijo, String sexoHijo, String nombreEncargado, String ciudadEncargado, String emailEncargado, String telefonoEncargado, Date fechaEntrega, String fechaEntregaString, String horaEntregaString, String direccionEntrega) {
         this.idPedido = idPedido;

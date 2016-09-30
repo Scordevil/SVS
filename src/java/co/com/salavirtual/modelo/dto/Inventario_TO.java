@@ -125,22 +125,28 @@ public class Inventario_TO {
 
     private Empresa_TO idEmpresa;
 
-    //constructores
+    private Pedido_TO pedido;
 
+    //constructores
     public Inventario_TO(int idInventario, int cantidad) {
         this.idInventario = idInventario;
         this.cantidad = cantidad;
     }
-    
-    
+
     public Inventario_TO() {
     }
 
     public Inventario_TO(int idInventario) {
         this.idInventario = idInventario;
     }
-    
-    
+
+    public Inventario_TO(int idInventario, String nombre, String genero, Empresa_TO idEmpresa, Pedido_TO pedido) {
+        this.idInventario = idInventario;
+        this.nombre = nombre;
+        this.genero = genero;
+        this.idEmpresa = idEmpresa;
+        this.pedido = pedido;
+    }
 
     public Inventario_TO(int idInventario, String codigo, String nombre, String descripcion, int edadDesde, int edadHasta, String genero, int cantidad, String url1, String url2, String url3, String url4, String url5, String url6, String url7, String url8, String url9, String url10, String url11, String url12, String observacion, Empresa_TO idEmpresa) {
         this.idInventario = idInventario;
@@ -191,8 +197,7 @@ public class Inventario_TO {
         this.observacion = observacion;
         this.sumatoria = sumatoria;
         this.idEmpresa = idEmpresa;
-    }   
-    
+    }
 
     public Inventario_TO(String codigo, String nombre, String descripcion, int edadDesde, int edadHasta, String genero, int cantidad, String url1, String url2, String url3, String url4, String url5, String url6, String url7, String url8, String url9, String url10, String url11, String url12, String observacion, Empresa_TO idEmpresa) {
         this.codigo = codigo;
@@ -402,8 +407,14 @@ public class Inventario_TO {
     public void setSumatoria(int sumatoria) {
         this.sumatoria = sumatoria;
     }
-    
-    
+
+    public Pedido_TO getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido_TO pedido) {
+        this.pedido = pedido;
+    }
 
     @Override
     public String toString() {

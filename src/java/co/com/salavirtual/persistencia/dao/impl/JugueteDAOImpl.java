@@ -6,9 +6,12 @@
 package co.com.salavirtual.persistencia.dao.impl;
 
 import co.com.salavirtual.conexion.ConexionSQL;
+import co.com.salavirtual.modelo.dto.Ciudad_TO;
 import co.com.salavirtual.modelo.dto.Comite_TO;
 import co.com.salavirtual.modelo.dto.Empresa_TO;
 import co.com.salavirtual.modelo.dto.Inventario_TO;
+import co.com.salavirtual.modelo.dto.Pedido_TO;
+import co.com.salavirtual.modelo.dto.Usuario_TO;
 import co.com.salavirtual.persistencia.dao.JugueteDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -335,26 +338,24 @@ public class JugueteDAOImpl implements JugueteDAO {
         return inventario;
     }
 
-    
     @Override
     public int ActualizarInventario(Inventario_TO juguete) throws Exception {
         int resultado = 0;
         Inventario_TO inv = new Inventario_TO();
         int cantidad = 0;
         try {
-            String sql = "SELECT idInventario, cantidad FROM `inventario` where idInventario="+juguete.getIdInventario()+"";
+            String sql = "SELECT idInventario, cantidad FROM `inventario` where idInventario=" + juguete.getIdInventario() + "";
             ResultSet rs = null;
             rs = st.executeQuery(sql);
             while (rs.next()) {
                 inv = new Inventario_TO(rs.getInt(1), rs.getInt(2));
             }
-            
-            
+
             cantidad = (inv.getCantidad() - juguete.getCantidad());
-            
-            System.out.println("-----------------"+inv.getCantidad()+juguete.getCantidad()+cantidad);
-            
-            String sql1 = "UPDATE `inventario` SET `cantidad`="+cantidad+" WHERE idInventario="+juguete.getIdInventario()+";";
+
+            System.out.println("-----------------" + inv.getCantidad() + juguete.getCantidad() + cantidad);
+
+            String sql1 = "UPDATE `inventario` SET `cantidad`=" + cantidad + " WHERE idInventario=" + juguete.getIdInventario() + ";";
 
             st.execute(sql1);
             resultado = 1;
@@ -367,27 +368,27 @@ public class JugueteDAOImpl implements JugueteDAO {
         }
         return resultado;
     }
-    
-     @Override
-    public List<Inventario_TO> ConsultarJuguetesSeleccionEdadGeneroCiudadEmpresa(int idEmpresa, int edad, String genero, int idCiudad) throws Exception{
+
+    @Override
+    public List<Inventario_TO> ConsultarJuguetesEdadGeneroCiudadEmpresa(int idEmpresa, int edad, String genero, int idCiudad) throws Exception {
 
         List<Inventario_TO> juguetesSeleccion = new ArrayList<>();
 
         try {
-            String sql = "select us.cc, us.nombre, ci.nombre, ped.nombreHijo, ped.edadHijo, ped.sexoHijo, inv.nombre\n"
-                    + "from usuario as us, ciudad as ci, pedido as ped ,inventario as inv, empresa as em\n"
-                    + "where us.idUsuario=ped.idUsuario\n"
-                    + "and us.idCiudad=ci.idCiudad\n"
-                    + "and ped.idInventario=inv.idInventario\n"
-                    + "and us.idEmpresa="+idEmpresa+"\n"
-                    + "and ci.idCiudad="+edad+"\n"
-                    + "and ped.sexoHijo="+genero+"\n"
-                    + "and ped.edadHijo="+idCiudad+"";
+            String sql = " select us.cc, us.nombre,ci.idCiudad, ci.nombre, ped.nombreHijo, ped.edadHijo, ped.sexoHijo,inv.idInventario, inv.nombre "
+                    + " from usuario as us, ciudad as ci, pedido as ped ,inventario as inv, empresa as em "
+                    + " where us.idUsuario=ped.idUsuario "
+                    + " and us.idCiudad=ci.idCiudad "
+                    + " and ped.idInventario=inv.idInventario "
+                    + " and us.idEmpresa=" + idEmpresa + " "
+                    + " and ci.idCiudad=" + edad + " "
+                    + " and ped.sexoHijo=" + genero + " "
+                    + " and ped.edadHijo=" + idCiudad + "";
             ResultSet rs = null;
             rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                juguetesSeleccion.add(new Inventario_TO(rs.getString(1), rs.getString(2),rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6) ));
+                juguetesSeleccion.add(new Inventario_TO(rs.getInt(8), rs.getString(9), rs.getString(7), new Empresa_TO(new Usuario_TO(new Ciudad_TO(rs.getInt(3), rs.getString(4)), rs.getString(1), rs.getString(2))), new Pedido_TO(rs.getString(5), rs.getInt(6))));
             }
 
         } catch (Exception e) {
@@ -397,6 +398,5 @@ public class JugueteDAOImpl implements JugueteDAO {
         }
         return juguetesSeleccion;
     }
-
 
 }

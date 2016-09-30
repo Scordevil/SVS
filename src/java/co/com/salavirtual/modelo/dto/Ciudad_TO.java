@@ -42,12 +42,18 @@ public class Ciudad_TO {
         this.idCiudad = idCiudad;
     }
 
+    public Ciudad_TO(int idCiudad, String nombre) {
+        this.idCiudad = idCiudad;
+        this.nombre = nombre;
+    }
+
     public Ciudad_TO(int idCiudad, String nombre, String descricion, Departamento_TO departamento) {
         this.idCiudad = idCiudad;
         this.nombre = nombre;
         this.descripcion = descricion;
         this.idDepartamento = departamento;
     }
+    
 
     //Getters and Setters
     public int getIdCiudad() {
@@ -64,7 +70,7 @@ public class Ciudad_TO {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }   
+    }
 
     public String getDescripcion() {
         return descripcion;
@@ -86,7 +92,5 @@ public class Ciudad_TO {
     public String toString() {
         return "Ciudad_TO{" + "idCiudad=" + idCiudad + ", nombre=" + nombre + ", descripcion=" + descripcion + ", idDepartamento=" + idDepartamento + '}';
     }
-    
-   
 
 }

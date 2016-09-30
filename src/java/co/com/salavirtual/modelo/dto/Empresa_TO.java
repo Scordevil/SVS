@@ -52,9 +52,9 @@ public class Empresa_TO {
      * Columna urlBanner
      */
     private String urlBanner;
-    
+
     private Usuario_TO idUsuario;
-    
+
     private int comite;
 
     //constructores
@@ -63,6 +63,10 @@ public class Empresa_TO {
 
     public Empresa_TO(int idEmpresa) {
         this.idEmpresa = idEmpresa;
+    }
+
+    public Empresa_TO(Usuario_TO idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public Empresa_TO(int idEmpresa, String nombre, String direccion, String nit, String telefono, String correo, String urlLogo, String urlBanner, Usuario_TO usuario, int comite) {
@@ -89,12 +93,6 @@ public class Empresa_TO {
         this.idUsuario = usuario;
         this.comite = comite;
     }
-
-    
-
-    
-
-
 
     //Getters And Setters
     public int getIdEmpresa() {
@@ -169,8 +167,6 @@ public class Empresa_TO {
         this.idUsuario = idUsuario;
     }
 
-    
-
     public int getComite() {
         return comite;
     }
@@ -183,13 +179,5 @@ public class Empresa_TO {
     public String toString() {
         return "Empresa_TO{" + "idEmpresa=" + idEmpresa + ", nombre=" + nombre + ", direccion=" + direccion + ", nit=" + nit + ", telefono=" + telefono + ", correo=" + correo + ", urlLogo=" + urlLogo + ", urlBanner=" + urlBanner + ", idUsuario=" + idUsuario + ", comite=" + comite + '}';
     }
-
-    
-    
-    
-    
-    
-
-
 
 }
