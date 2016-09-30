@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class ConexionSQL {
 
   //  static String clave = "yU7eywfXILoZjtaD";
-    static String clave = "";
+    static String clave = "12345678";
     static Statement ST = null;
     static Connection cn = null;
 
