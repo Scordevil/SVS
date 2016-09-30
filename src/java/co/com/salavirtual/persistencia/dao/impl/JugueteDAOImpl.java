@@ -369,34 +369,34 @@ public class JugueteDAOImpl implements JugueteDAO {
         return resultado;
     }
 
-    @Override
-    public List<Inventario_TO> ConsultarJuguetesEdadGeneroCiudadEmpresa(int idEmpresa, int edad, String genero, int idCiudad) throws Exception {
-
-        List<Inventario_TO> juguetesSeleccion = new ArrayList<>();
-
-        try {
-            String sql = " select us.cc, us.nombre,ci.idCiudad, ci.nombre, ped.nombreHijo, ped.edadHijo, ped.sexoHijo,inv.idInventario, inv.nombre "
-                    + " from usuario as us, ciudad as ci, pedido as ped ,inventario as inv, empresa as em "
-                    + " where us.idUsuario=ped.idUsuario "
-                    + " and us.idCiudad=ci.idCiudad "
-                    + " and ped.idInventario=inv.idInventario "
-                    + " and us.idEmpresa=" + idEmpresa + " "
-                    + " and ci.idCiudad=" + edad + " "
-                    + " and ped.sexoHijo=" + genero + " "
-                    + " and ped.edadHijo=" + idCiudad + "";
-            ResultSet rs = null;
-            rs = st.executeQuery(sql);
-
-            while (rs.next()) {
-                juguetesSeleccion.add(new Inventario_TO(rs.getInt(8), rs.getString(9), rs.getString(7), new Empresa_TO(new Usuario_TO(new Ciudad_TO(rs.getInt(3), rs.getString(4)), rs.getString(1), rs.getString(2))), new Pedido_TO(rs.getString(5), rs.getInt(6))));
-            }
-
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            ConexionSQL.CerrarConexion();
-        }
-        return juguetesSeleccion;
-    }
+//    @Override
+//    public List<Inventario_TO> ConsultarJuguetesEdadGeneroCiudadEmpresa(int idEmpresa, int edad, String genero, int idCiudad) throws Exception {
+//
+//        List<Inventario_TO> juguetesSeleccion = new ArrayList<>();
+//
+//        try {
+//            String sql = " select us.cc, us.nombre,ci.idCiudad, ci.nombre, ped.nombreHijo, ped.edadHijo, ped.sexoHijo,inv.idInventario, inv.nombre "
+//                    + " from usuario as us, ciudad as ci, pedido as ped ,inventario as inv, empresa as em "
+//                    + " where us.idUsuario=ped.idUsuario "
+//                    + " and us.idCiudad=ci.idCiudad "
+//                    + " and ped.idInventario=inv.idInventario "
+//                    + " and us.idEmpresa=" + idEmpresa + " "
+//                    + " and ci.idCiudad=" + edad + " "
+//                    + " and ped.sexoHijo=" + genero + " "
+//                    + " and ped.edadHijo=" + idCiudad + "";
+//            ResultSet rs = null;
+//            rs = st.executeQuery(sql);
+//
+//            while (rs.next()) {
+//                juguetesSeleccion.add(new Inventario_TO(rs.getInt(8), rs.getString(9), rs.getString(7), new Empresa_TO(new Usuario_TO(new Ciudad_TO(rs.getInt(3), rs.getString(4)), rs.getString(1), rs.getString(2))), new Pedido_TO(rs.getString(5), rs.getInt(6))));
+//            }
+//
+//        } catch (Exception e) {
+//            throw e;
+//        } finally {
+//            ConexionSQL.CerrarConexion();
+//        }
+//        return juguetesSeleccion;
+//    }
 
 }
