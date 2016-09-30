@@ -199,6 +199,7 @@ public class PedidoDAOImpl implements PedidoDAO {
             resultado = 1;
 
         } catch (Exception e) {
+            resultado = 0;
             throw e;
 
         } finally {

@@ -127,16 +127,14 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public int quitarAcceso( int idUsuario) throws Exception {
+    public int quitarAcceso(int idUsuario) throws Exception {
         int resultado = 0;
         try {
-            
+
             try {
                 String sql = "UPDATE usuario SET  "
-                      
                         + "`contrasena` = '' "
-                   
-                        + " WHERE idUsuario = " + idUsuario +";";
+                        + " WHERE idUsuario = " + idUsuario + ";";
 
                 st.execute(sql);
                 resultado = 1;
@@ -173,31 +171,29 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     @Override
     public List<Usuario_TO> consultarUsuarios() throws Exception {
         List<Usuario_TO> usuarios = new ArrayList<>();
+
         try {
-            try {
-                String sql = "SELECT  `idUsuario`, `idEmpresa`, `idTipoUsuario`, `idCiudad`, `idDepartamento`, `nombre`, `codigoEmpleado`, `cc`, `telefono`, "
-                        + "`email`,`usuario`, `contrasena`, `oficina`, `areaTrabajo` FROM usuario";
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    usuarios.add(new Usuario_TO(rs.getInt(1),
-                            new Tipo_Usuario_TO(rs.getInt(3)),
-                            new Ciudad_TO(rs.getInt(4)),
-                            new Departamento_TO(rs.getInt(5)),
-                            new Empresa_TO(rs.getInt(2)),
-                            rs.getString(6),
-                            rs.getInt(7),
-                            rs.getString(8),
-                            rs.getString(9),
-                            rs.getString(10),
-                            rs.getString(11),
-                            rs.getString(12),
-                            rs.getString(13),
-                            rs.getString(14)));
-                }
-            } catch (SQLException e) {
-                throw e;
+            String sql = "SELECT  `idUsuario`, `idEmpresa`, `idTipoUsuario`, `idCiudad`, `idDepartamento`, `nombre`, `codigoEmpleado`, `cc`, `telefono`, "
+                    + "`email`,`usuario`, `contrasena`, `oficina`, `areaTrabajo` FROM usuario";
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                usuarios.add(new Usuario_TO(rs.getInt(1),
+                        new Tipo_Usuario_TO(rs.getInt(3)),
+                        new Ciudad_TO(rs.getInt(4)),
+                        new Departamento_TO(rs.getInt(5)),
+                        new Empresa_TO(rs.getInt(2)),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
+                        rs.getString(13),
+                        rs.getString(14)));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            usuarios = new ArrayList<>();
             throw e;
         } finally {
             ConexionSQL.CerrarConexion();
