@@ -367,5 +367,36 @@ public class JugueteDAOImpl implements JugueteDAO {
         }
         return resultado;
     }
+    
+     @Override
+    public List<Inventario_TO> ConsultarJuguetesSeleccionEdadGeneroCiudadEmpresa(int idEmpresa, int edad, String genero, int idCiudad) throws Exception{
+
+        List<Inventario_TO> juguetesSeleccion = new ArrayList<>();
+
+        try {
+            String sql = "select us.cc, us.nombre, ci.nombre, ped.nombreHijo, ped.edadHijo, ped.sexoHijo, inv.nombre\n"
+                    + "from usuario as us, ciudad as ci, pedido as ped ,inventario as inv, empresa as em\n"
+                    + "where us.idUsuario=ped.idUsuario\n"
+                    + "and us.idCiudad=ci.idCiudad\n"
+                    + "and ped.idInventario=inv.idInventario\n"
+                    + "and us.idEmpresa="+idEmpresa+"\n"
+                    + "and ci.idCiudad="+edad+"\n"
+                    + "and ped.sexoHijo="+genero+"\n"
+                    + "and ped.edadHijo="+idCiudad+"";
+            ResultSet rs = null;
+            rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                juguetesSeleccion.add(new Inventario_TO(rs.getString(1), rs.getString(2),rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6) ));
+            }
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            ConexionSQL.CerrarConexion();
+        }
+        return juguetesSeleccion;
+    }
+
 
 }

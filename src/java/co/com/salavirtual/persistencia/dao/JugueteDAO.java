@@ -38,4 +38,6 @@ public interface JugueteDAO {
     public List<Inventario_TO> ConsultarJuguetesRangoGenero(int desde,int hasta, String genero) throws Exception;
 
     public int ActualizarInventario(Inventario_TO juguete) throws Exception;
+    
+    public List<Inventario_TO> ConsultarJuguetesSeleccionEdadGeneroCiudadEmpresa(int idEmpresa, int edad, String genero, int idCiudad) throws Exception;
 }
