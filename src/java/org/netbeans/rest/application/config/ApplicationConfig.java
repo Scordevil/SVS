@@ -38,6 +38,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.salavirtual.servicio.impl.ConsultarComiteImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarComitePorUsuarioImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarComitesImpl.class);
+        resources.add(co.com.salavirtual.servicio.impl.ConsultarComitesPorUsuarioImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarDepartamentoImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarDepartamentosImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarEmpresaImpl.class);
@@ -85,6 +86,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.salavirtual.servicio.impl.RegistrarEmpresasImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.RegistrarJuguetesComiteImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.RegistrarPedidoImpl.class);
+        resources.add(co.com.salavirtual.servicio.impl.RegistrarUsuarioImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.RegistrarUsuariosComiteImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.RegistrarVotacionImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ValidarQuienNoVotoImpl.class);

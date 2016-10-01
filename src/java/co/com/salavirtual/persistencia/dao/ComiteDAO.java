@@ -19,7 +19,7 @@ import java.util.List;
 public interface ComiteDAO {
 
     public List<Comite_TO> consultarComite() throws Exception;
-    
+
     public Comite_TO consultarComite(Comite_TO comite) throws Exception;
 
     public int crearComite(int idEstado, String nombre, String descripcion, String fechaApertura, String fechaCierre, int idEmpresa) throws Exception;
@@ -27,6 +27,9 @@ public interface ComiteDAO {
     public int editarComite(int idComite, int idEstado, String nombre, String descripcion, String fechaApertura, String fechaCierre, int idEmpresa) throws Exception;
 
     public int eliminarComite(int idComite) throws Exception;
-    
+
     public int consultarComitePorUsuario(int idUsuario) throws Exception;
+
+    public List<Comite_TO> consultarComitesPorUsuario(int idUsuario) throws Exception;
+    
 }

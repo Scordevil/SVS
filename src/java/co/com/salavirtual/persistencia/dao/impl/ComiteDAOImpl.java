@@ -236,4 +236,37 @@ public class ComiteDAOImpl implements ComiteDAO {
         return valor;
     }
 
+    /**
+     *
+     * METODOS PARA CONSULTAR Comite
+     *
+     * @param idUsuario
+     * @return @throws Exception
+     */
+    @Override
+    public List<Comite_TO> consultarComitesPorUsuario(int idUsuario) throws Exception {
+
+        List<Comite_TO> comites = new ArrayList<>();
+
+        try {
+
+            String sql = "SELECT co.idComite, co.idEstado, co.nombre, co.descripcion, co.fechaApertura, co.fechaCierre, co.idEmpresa FROM comite as co, empresa as emp "
+                    + "WHERE emp.idEmpresa = co.idEmpresa and emp.idUsuario = "+idUsuario;
+
+            ResultSet rs = null;
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                comites.add(new Comite_TO(rs.getInt(1), new Estado_TO(rs.getInt(2)), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getDate(6), new Empresa_TO(rs.getInt(7))));
+
+            }
+
+        } catch (Exception e) {
+            comites = new ArrayList<>();
+            throw e;
+        } finally {
+            ConexionSQL.CerrarConexion();
+        }
+        return comites;
+    }
+
 }
