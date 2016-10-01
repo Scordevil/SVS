@@ -13,5 +13,5 @@ import java.util.List;
  * @author kira
  */
 public interface ConsultarJuguetesEdadGeneroCiudadEmpresa {
-    public List<Inventario_TO> consultarJuguetesEdadGeneroCiudadEmpresa(int idEmpresa, int edad, String genero, int idCiudad) throws Exception;
+    public List<Inventario_TO> ConsultarJuguetesEdadGeneroCiudadEmpresa(int idEmpresa, int edad, String genero, int idCiudad) throws Exception;
 }

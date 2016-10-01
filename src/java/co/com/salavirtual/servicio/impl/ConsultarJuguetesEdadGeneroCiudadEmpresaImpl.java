@@ -27,7 +27,7 @@ public class ConsultarJuguetesEdadGeneroCiudadEmpresaImpl implements ConsultarJu
    @GET
     @Produces({"application/json"})
     @Override
-    public List<Inventario_TO> ConsultarJuguetesEdadGeneroCiudadEmpresa(@QueryParam("idEmpresa") int idEmpresa, @QueryParam("edad") int edad, @QueryParam("genero") String genero, @QueryParam("idCiudad") String idCiudad ) throws Exception {
+    public List<Inventario_TO> ConsultarJuguetesEdadGeneroCiudadEmpresa(@QueryParam("idEmpresa") int idEmpresa, @QueryParam("edad") int edad, @QueryParam("genero") String genero, @QueryParam("idCiudad") int idCiudad ) throws Exception {
 
         JugueteDAOImpl jugueteDao = new JugueteDAOImpl();
         List<Inventario_TO> seleciones = new ArrayList<>();

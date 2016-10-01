@@ -392,6 +392,7 @@ public class JugueteDAOImpl implements JugueteDAO {
             }
 
         } catch (Exception e) {
+            juguetesSeleccion = new ArrayList<>();
             throw e;
         } finally {
             ConexionSQL.CerrarConexion();
