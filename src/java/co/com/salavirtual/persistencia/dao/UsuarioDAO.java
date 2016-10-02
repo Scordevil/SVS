@@ -42,6 +42,8 @@ public interface UsuarioDAO {
     public List<Usuario_TO> consultarUsuariosEmpresa(int idEmpresa) throws Exception;
     
     public List<Usuario_TO> consultarUsuariosEmpresaLike(int idEmpresa , String nombre) throws Exception;
+    
+    public List<Usuario_TO> consultarUsuariosEmpresaLikeInicio(int idEmpresa , String nombre) throws Exception;
 
    
 }
