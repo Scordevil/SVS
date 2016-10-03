@@ -380,6 +380,7 @@ public class JugueteDAOImpl implements JugueteDAO {
                     + " where us.idUsuario=ped.idUsuario "
                     + " and us.idCiudad=ci.idCiudad "
                     + " and ped.idInventario=inv.idInventario "
+                    + " and us.idEmpresa = em.idEmpresa "
                     + " and us.idEmpresa=" + idEmpresa + " "
                     + " and ci.idCiudad=" + idCiudad + " "
                     + " and ped.sexoHijo='" + genero + "' "
