@@ -375,21 +375,21 @@ public class JugueteDAOImpl implements JugueteDAO {
         List<Inventario_TO> juguetesSeleccion = new ArrayList<>();
 
         try {
-            String sql = "SELECT cc, us.nombre,ci.idCiudad, ci.nombre, ped.nombreHijo, ped.edadHijo,\n"
-                    + " ped.sexoHijo,inv.idInventario, inv.nombre\n"
-                    + "from usuario as us, ciudad as ci, pedido as ped ,inventario as inv, empresa as em \n"
-                    + "                   where us.idUsuario=ped.idUsuario\n"
-                    + "                   and us.idCiudad=ci.idCiudad\n"
-                    + "                   and ped.idInventario=inv.idInventario\n"
-                    + "                   and ped.idInventario >0\n"
-                    + "                   and em.idEmpresa=us.idEmpresa\n"
+            String sql = "SELECT cc, us.nombre,ci.idCiudad, ci.nombre, ped.nombreHijo, ped.edadHijo, "
+                    + " ped.sexoHijo,inv.idInventario, inv.nombre "
+                    + " from usuario as us, ciudad as ci, pedido as ped ,inventario as inv, empresa as em  "
+                    + "                   where us.idUsuario=ped.idUsuario "
+                    + "                   and us.idCiudad=ci.idCiudad "
+                    + "                   and ped.idInventario=inv.idInventario "
+                    + "                   and ped.idInventario >0 "
+                    + "                   and em.idEmpresa=us.idEmpresa "
                     + "                   and us.idEmpresa="+idEmpresa
                     + "                   and ci.idCiudad= "+idCiudad 
                     + "                   and ped.sexoHijo='" + genero 
                     + "'                   and ped.edadHijo= "+ edad 
-                    + "                   GROUP BY ped.idInventario, cc, us.nombre,ci.idCiudad, ci.nombre, ped.nombreHijo, ped.edadHijo,\n"
-                    + "						 ped.sexoHijo,inv.idInventario, inv.nombre \n"
-                    + "						 order by inv.idInventario desc";
+                    + "                   GROUP BY ped.idInventario, cc, us.nombre,ci.idCiudad, ci.nombre, ped.nombreHijo, ped.edadHijo, "
+                    + "						 ped.sexoHijo,inv.idInventario, inv.nombre  "
+                    + "						 order by inv.idInventario desc ";
             ResultSet rs = null;
             rs = st.executeQuery(sql);
 
