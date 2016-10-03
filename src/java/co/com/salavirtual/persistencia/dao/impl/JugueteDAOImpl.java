@@ -381,9 +381,9 @@ public class JugueteDAOImpl implements JugueteDAO {
                     + " and us.idCiudad=ci.idCiudad "
                     + " and ped.idInventario=inv.idInventario "
                     + " and us.idEmpresa=" + idEmpresa + " "
-                    + " and ci.idCiudad=" + edad + " "
-                    + " and ped.sexoHijo=" + genero + " "
-                    + " and ped.edadHijo=" + idCiudad + "";
+                    + " and ci.idCiudad=" + idCiudad + " "
+                    + " and ped.sexoHijo='" + genero + "' "
+                    + " and ped.edadHijo=" + edad + ";";
             ResultSet rs = null;
             rs = st.executeQuery(sql);
 
