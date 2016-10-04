@@ -24,7 +24,7 @@ import javax.ws.rs.core.MediaType;
  * @author CristianCamilo
  */
 @Stateless
-@Path("/consultarUsuariosPorEmpresa")
+@Path("/consultarUsuariosPorEmpresaYComite")
 public class ConsultarUsuariosPorEmpresaImpl implements ConsultarUsuariosPorEmpresa{
 
     @GET

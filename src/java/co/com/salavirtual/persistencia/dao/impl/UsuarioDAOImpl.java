@@ -397,7 +397,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             try {
                 String sql = "SELECT  u.`idUsuario`, u.`idEmpresa`, u.`idTipoUsuario`, u.`idCiudad`, u.`idDepartamento`, u.`nombre`, u.`codigoEmpleado`, u.`cc`, u.`telefono`, "
                         + " u.`email`,u.`usuario`, u. `contrasena`, u.`oficina`, u.`areaTrabajo`, tu.`nombre` FROM usuario as u, tipousuario as tu"
-                        + " WHERE u.idEmpresa = " + idEmpresa + " and tu.idTipoUsuario=u.idTipoUsuario;";
+                        + " WHERE u.idEmpresa = " + idEmpresa + " and tu.idTipoUsuario=u.idTipoUsuario and u.`idUsuario` NOT "
+                        + "IN (SELECT `idUsuario` FROM `comite_usuario`) LIMIT 100;";
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     usuarios.add(new Usuario_TO(rs.getInt(1),
@@ -465,8 +466,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return usuarios;
     }
-    
-     @Override
+
+    @Override
     public List<Usuario_TO> consultarUsuariosEmpresaLikeInicio(int idEmpresa, String nombre) throws Exception {
         List<Usuario_TO> usuarios = new ArrayList<>();
 
