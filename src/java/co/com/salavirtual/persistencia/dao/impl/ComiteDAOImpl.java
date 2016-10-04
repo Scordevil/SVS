@@ -42,7 +42,17 @@ public class ComiteDAOImpl implements ComiteDAO {
             rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                comite.add(new Comite_TO(rs.getInt(1), new Estado_TO(rs.getInt(2)), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), new Empresa_TO(rs.getInt(7))));
+                String[] fechaApertura = null, fechaCierre = null;
+
+                fechaApertura = rs.getDate(5).toString().split("T");
+
+                String fechaAperturaS = fechaApertura[0];
+
+                fechaCierre = rs.getDate(6).toString().split("T");
+
+                String fechaCierreS = fechaCierre[0];
+
+                comite.add(new Comite_TO(rs.getInt(1), new Estado_TO(rs.getInt(2)), rs.getString(3), rs.getString(4), fechaAperturaS, fechaCierreS, new Empresa_TO(rs.getInt(7))));
 
             }
 
@@ -251,12 +261,22 @@ public class ComiteDAOImpl implements ComiteDAO {
         try {
 
             String sql = "SELECT co.idComite, co.idEstado, co.nombre, co.descripcion, co.fechaApertura, co.fechaCierre, co.idEmpresa FROM comite as co, empresa as emp "
-                    + "WHERE emp.idEmpresa = co.idEmpresa and emp.idUsuario = "+idUsuario;
+                    + "WHERE emp.idEmpresa = co.idEmpresa and emp.idUsuario = " + idUsuario;
 
             ResultSet rs = null;
             rs = st.executeQuery(sql);
             while (rs.next()) {
-                comites.add(new Comite_TO(rs.getInt(1), new Estado_TO(rs.getInt(2)), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getDate(6), new Empresa_TO(rs.getInt(7))));
+                String[] fechaApertura = null, fechaCierre = null;
+
+                fechaApertura = rs.getDate(5).toString().split("T");
+
+                String fechaAperturaS = fechaApertura[0];
+
+                fechaCierre = rs.getDate(6).toString().split("T");
+
+                String fechaCierreS = fechaCierre[0];
+
+                comites.add(new Comite_TO(rs.getInt(1), new Estado_TO(rs.getInt(2)), rs.getString(3), rs.getString(4), fechaAperturaS, fechaCierreS, new Empresa_TO(rs.getInt(7))));
 
             }
 

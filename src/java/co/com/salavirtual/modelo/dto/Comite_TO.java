@@ -86,6 +86,16 @@ public class Comite_TO {
         this.idEmpresa = empresa;
     }
 
+    public Comite_TO(int idComite, Estado_TO idEstado, String nombre, String descripcion, String fechaAperturaString, String fechaCierreString, Empresa_TO empresa) {
+        this.idComite = idComite;
+        this.idEstado = idEstado;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaAperturaString = fechaAperturaString;
+        this.fechaCierreString = fechaCierreString;
+        this.idEmpresa = empresa;
+    }
+
     public Comite_TO(int idComite, Estado_TO idEstado, String nombre, String descripcion, Date fechaApertura, String fechaAperturaString, Date fechaCierre, String fechaCierreString, Empresa_TO idEmpresa) {
         this.idComite = idComite;
         this.idEstado = idEstado;
@@ -94,19 +104,10 @@ public class Comite_TO {
         this.fechaApertura = fechaApertura;
         this.fechaAperturaString = fechaAperturaString;
         this.fechaCierre = fechaCierre;
-        this.fechaCierreString = fechaCierreString;
+        this.fechaCierre = fechaCierre;
         this.idEmpresa = idEmpresa;
     }
 
-    public Comite_TO(int idComite, Estado_TO idEstado, String nombre, String descripcion, String fechaAperturaString, String fechaCierreString, Empresa_TO idEmpresa) {
-        this.idComite = idComite;
-        this.idEstado = idEstado;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.fechaAperturaString = fechaAperturaString;
-        this.fechaCierreString = fechaCierreString;
-        this.idEmpresa = idEmpresa;
-    }
 
 //Getters and Setters
     public int getIdComite() {
@@ -181,13 +182,10 @@ public class Comite_TO {
         this.idEmpresa = idEmpresa;
     }
 
-    
-
 //to string
-
     @Override
     public String toString() {
         return "Comite_TO{" + "idComite=" + idComite + ", idEstado=" + idEstado + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechaApertura=" + fechaApertura + ", fechaAperturaString=" + fechaAperturaString + ", fechaCierre=" + fechaCierre + ", fechaCierreString=" + fechaCierreString + ", idEmpresa=" + idEmpresa + '}';
     }
-   
+
 }
