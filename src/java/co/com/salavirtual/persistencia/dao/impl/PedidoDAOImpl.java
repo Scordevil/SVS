@@ -171,6 +171,49 @@ public class PedidoDAOImpl implements PedidoDAO {
 
     /**
      *
+     * METODOS PARA CONSULTAR USUARIOS POR LOGIN
+     *
+     * @param idUsuario
+     * @param nombreHijo
+     * @return @throws Exception
+     */
+    @Override
+    public Pedido_TO consultarPedidoPorIdYNombre(int idUsuario, String nombreHijo) throws Exception {
+        Pedido_TO pedido = new Pedido_TO();
+        try {
+            try {
+                String sql = "SELECT `pedido`.`idPedido`, "
+                        + "    `pedido`.`idUsuario`, "
+                        + "    `pedido`.`nombreHijo`, "
+                        + "    `pedido`.`edadHijo`, "
+                        + "    `pedido`.`sexoHijo`, "
+                        + "    `pedido`.`nombreEncargado`, "
+                        + "    `pedido`.`ciudadEncargado`, "
+                        + "    `pedido`.`emailEncargado`, "
+                        + "    `pedido`.`telefonoEncargado`, "
+                        + "    `pedido`.`fechaEntrega`, "
+                        + "    `pedido`.`horaEntrega`, "
+                        + "    `pedido`.`DireccionEntrega` "
+                        + "FROM `salavirtual`.`pedido` as pedido where pedido.idUsuario = " + idUsuario + " and pedido.nombreHijo = " + nombreHijo + ";";
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    pedido = new Pedido_TO(rs.getInt(1), new Usuario_TO(rs.getInt(2)), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12));
+                }
+            } catch (SQLException e) {
+                pedido = new Pedido_TO();
+                throw e;
+            }
+        } catch (Exception e) {
+            pedido = new Pedido_TO();
+            throw e;
+        } finally {
+            ConexionSQL.CerrarConexion();
+        }
+        return pedido;
+    }
+
+    /**
+     *
      * METODOS PARA REGISTRAR USUARIOS
      *
      * @param pedido

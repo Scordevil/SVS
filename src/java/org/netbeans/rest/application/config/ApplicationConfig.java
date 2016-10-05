@@ -56,6 +56,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.salavirtual.servicio.impl.ConsultarJuguetesMasVotadosImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarJuguetesPorEmpresaImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarPedidoImpl.class);
+        resources.add(co.com.salavirtual.servicio.impl.ConsultarPedidoPorIdYNombreImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarPedidosPorIdImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarTipoUsuarioImpl.class);
         resources.add(co.com.salavirtual.servicio.impl.ConsultarTipoUsuariosImpl.class);

@@ -23,10 +23,12 @@ public interface PedidoDAO {
 
     public Pedido_TO consultarPedido(int idPedido) throws Exception;
 
+    public Pedido_TO consultarPedidoPorIdYNombre(int idUsuario, String nombreHijo) throws Exception;
+
     public int registrarPedido(Pedido_TO pedido) throws Exception;
-    
-     public int editarPedido(Pedido_TO pedido) throws Exception;
-    
+
+    public int editarPedido(Pedido_TO pedido) throws Exception;
+
     public List<Inventario_TO> consultarMasSeleccionados(int idEmpresa) throws Exception;
 
 }
