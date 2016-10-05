@@ -194,7 +194,7 @@ public class PedidoDAOImpl implements PedidoDAO {
                         + "    `pedido`.`fechaEntrega`, "
                         + "    `pedido`.`horaEntrega`, "
                         + "    `pedido`.`DireccionEntrega` "
-                        + "FROM `salavirtual`.`pedido` as pedido where pedido.idUsuario = " + idUsuario + " and pedido.nombreHijo = " + nombreHijo + ";";
+                        + "FROM `salavirtual`.`pedido` as pedido where pedido.idUsuario = " + idUsuario + " and pedido.nombreHijo = '" + nombreHijo + "';";
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     pedido = new Pedido_TO(rs.getInt(1), new Usuario_TO(rs.getInt(2)), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12));
