@@ -247,7 +247,7 @@ public class JugueteDAOImpl implements JugueteDAO {
      * @return @throws Exception
      */
     @Override
-    public List<Inventario_TO> ConsultarJuguetesRangoGenero(int desde, int hasta, String genero) throws Exception {
+    public List<Inventario_TO> ConsultarJuguetesRangoGenero(int desde, int hasta, String genero, int idUsuario) throws Exception {
 
         List<Inventario_TO> juguetes = new ArrayList<>();
 
@@ -255,9 +255,11 @@ public class JugueteDAOImpl implements JugueteDAO {
 
             String sql = "";
             if (!(genero.equals("A"))) {
-                sql = "SELECT idInventario, codigo, nombre, descripcion, edadDesde, edadHasta, genero, cantidad, url1, url2, url3, url4, url5, url6, url7, url8, url9, url10, url11, url12, observacion, idEmpresa FROM inventario WHERE edadDesde >= " + desde + "  and edadHasta <= " + hasta + "  AND genero = 'A' OR genero = '" + genero + "'";
+                sql = "SELECT idInventario, codigo, nombre, descripcion, edadDesde, edadHasta, genero, cantidad, url1, url2, url3, url4, url5, url6, url7, url8, url9, url10, url11, url12, observacion, idEmpresa FROM inventario WHERE edadDesde >= " + desde + "  and edadHasta <= " + hasta + "  AND genero = 'A' OR genero = '" + genero + "' and `idInventario` NOT "
+                        + "IN (SELECT v.`idInventario` FROM `votacion` as v where v.idUsuario = "+idUsuario+");";
             } else {
-                sql = "SELECT idInventario, codigo, nombre, descripcion, edadDesde, edadHasta, genero, cantidad, url1, url2, url3, url4, url5, url6, url7, url8, url9, url10, url11, url12, observacion, idEmpresa FROM inventario WHERE edadDesde >= " + desde + "  and edadHasta <= " + hasta + "";
+                sql = "SELECT idInventario, codigo, nombre, descripcion, edadDesde, edadHasta, genero, cantidad, url1, url2, url3, url4, url5, url6, url7, url8, url9, url10, url11, url12, observacion, idEmpresa FROM inventario WHERE edadDesde >= " + desde + "  and edadHasta <= " + hasta + " and `idInventario` NOT "
+                        + "IN (SELECT v.`idInventario` FROM `votacion` as v where v.idUsuario = "+idUsuario+");";
 
             }
             ResultSet rs = null;

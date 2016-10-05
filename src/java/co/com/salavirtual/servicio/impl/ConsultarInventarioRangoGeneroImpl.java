@@ -29,11 +29,11 @@ public class ConsultarInventarioRangoGeneroImpl implements ConsultarInventarioRa
     @Produces({"application/json"})
     @Override
     public List<Inventario_TO> ConsultarJuguetesRangoGenero(@QueryParam("desde") int desde, @QueryParam("hasta") int hasta,
-            @QueryParam("genero") String genero) throws Exception {
+            @QueryParam("genero") String genero, @QueryParam("idUsuario") int idUsuario) throws Exception {
 
         JugueteDAOImpl JugueteDAO = new JugueteDAOImpl();
         List<Inventario_TO> juguetes = new ArrayList<>();
-        juguetes = JugueteDAO.ConsultarJuguetesRangoGenero(desde,hasta, genero);
+        juguetes = JugueteDAO.ConsultarJuguetesRangoGenero(desde,hasta, genero, idUsuario);
         return juguetes;
     }
 
