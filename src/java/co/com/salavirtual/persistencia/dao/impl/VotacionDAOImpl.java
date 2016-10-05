@@ -188,14 +188,14 @@ public class VotacionDAOImpl implements VotacionDAO {
 
         try {
 
-            String sql = "SELECT us.idusuario, us.nombre, us.email, c.nombre, c.fechaApertura, c.fechaCierre"
-                    + "FROM salavirtual.usuario AS us, salavirtual.comite AS c"
-                    + "WHERE us.idusuario NOT "
-                    + "IN (SELECT u.idusuario "
-                    + "FROM salavirtual.comite_usuario AS cu, salavirtual.usuario AS u, salavirtual.votacion AS v "
-                    + "WHERE v.idusuario = u.idusuario "
-                    + "AND cu.idusuario = u.idusuario "
-                    + "AND v.idcomite = " + idComite + ");";
+            String sql = " SELECT us.idusuario, us.nombre, us.email, c.nombre, c.fechaApertura, c.fechaCierre "
+                    + " FROM salavirtual.usuario AS us, salavirtual.comite AS c "
+                    + " WHERE us.idusuario NOT "
+                    + " IN (SELECT u.idusuario "
+                    + " FROM salavirtual.comite_usuario AS cu, salavirtual.usuario AS u, salavirtual.votacion AS v "
+                    + " WHERE v.idusuario = u.idusuario "
+                    + " AND cu.idusuario = u.idusuario "
+                    + " AND v.idcomite = " + idComite + ");";
 
             ResultSet rs = null;
             rs = st.executeQuery(sql);
